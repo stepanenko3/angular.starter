@@ -1,0 +1,104 @@
+.table {
+    border-spacing: rem(1px);
+    border-collapse: collapse;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+
+    th, td {
+        padding: rem(13px) rem(9px);
+        font-size: rem(14px);
+    }
+
+    th {
+        &:first-child {
+            border-radius: rem(10px) 0 0 rem(10px);
+        }
+
+        &:last-child {
+            border-radius: 0 rem(10px) rem(10px) 0;
+        }
+    }
+
+    thead tr {
+        background: #f2f2f2;
+    }
+
+    tbody tr {
+        border-bottom: rem(1px) solid #f2f2f2;
+
+        &:last-child {
+            border: 0;
+        }
+    }
+
+    td, th {
+        text-align: left;
+
+        &.l {
+            text-align: right
+        }
+
+        &.c {
+            text-align: center
+        }
+
+        &.r {
+            text-align: center
+        }
+    }
+
+    @media screen and (max-width: map_get($grid-breakpoints, md)) {
+        display: block;
+
+        > *, tr, td, th {
+            display: block
+        }
+
+        thead {
+            display: none
+        }
+
+        tbody tr {
+            height: auto;
+            padding: rem(8px) 0;
+
+            td {
+                padding-left: 45%;
+                margin-bottom: rem(12px);
+
+                &:last-child {
+                    margin-bottom: 0
+                }
+
+                &:before {
+                    position: absolute;
+                    font-weight: 700;
+                    width: 40%;
+                    left: rem(10px);
+                    top: 0
+                }
+
+                &:nth-child(1):before {
+                    content: "Code";
+                }
+
+                &:nth-child(2):before {
+                    content: "Stock";
+                }
+
+                &:nth-child(3):before {
+                    content: "Cap";
+                }
+
+                &:nth-child(4):before {
+                    content: "Inch";
+                }
+
+                &:nth-child(5):before {
+                    content: "Box Type";
+                }
+            }
+        }
+    }
+}

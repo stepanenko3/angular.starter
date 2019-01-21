@@ -1,0 +1,158 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "client-app": {
+      "root": "",
+      "sourceRoot": "client.src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/client",
+            "index": "client.src/index.html",
+            "main": "client.src/main.ts",
+            "tsConfig": "client.src/tsconfig.app.json",
+            "polyfills": "client.src/polyfills.ts",
+            "assets": [
+              "client.src/assets",
+              "client.src/manifest.json",
+              "client.src/browserconfig.xml"
+            ],
+            "styles": [
+              "client.src/sass/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "fileReplacements": [{
+                "replace": "client.src/environments/environment.ts",
+                "with": "client.src/environments/environment.prod.ts"
+              }],
+              "serviceWorker": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "client-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "client-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "client-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "client.src/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "client.src/polyfills.ts",
+            "tsConfig": "client.src/tsconfig.spec.json",
+            "scripts": [],
+            "styles": [
+              "client.src/sass/styles.scss"
+            ],
+            "assets": [
+              "client.src/assets",
+              "client.src/favicon.ico",
+              "client.src/manifest.json",
+              "client.src/manifest.json"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "client.src/tsconfig.app.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          }
+        }
+      }
+    },
+    "app-e2e": {
+      "root": "",
+      "sourceRoot": "",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "client-app:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "client-app",
+  "schematics": {
+    "@schematics/angular:class": {
+      "spec": false
+    },
+    "@schematics/angular:component": {
+      "spec": false,
+      "inlineStyle": true,
+      "inlineTemplate": true,
+      "prefix": "app",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "spec": false,
+      "prefix": "app"
+    },
+    "@schematics/angular:guard": {
+      "spec": false
+    },
+    "@schematics/angular:module": {
+      "spec": false
+    },
+    "@schematics/angular:pipe": {
+      "spec": false
+    },
+    "@schematics/angular:service": {
+      "spec": false
+    }
+  }
+}

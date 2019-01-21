@@ -1,0 +1,26 @@
+// Utility classes
+// --------------------------------------------------
+
+a[href^="http"]:empty::before {
+    content: attr(href);
+}
+
+a {
+    color: color('dark');
+    text-decoration: none;
+
+    &.disabled {
+        pointer-events: none;
+    }
+}
+
+.br {
+    margin: 0 !important;
+}
+
+@import "utilities/align";
+@import "utilities/clearfix";
+@import "utilities/display";
+@import "utilities/float";
+@import "utilities/flex";
+@import "utilities/visibility";

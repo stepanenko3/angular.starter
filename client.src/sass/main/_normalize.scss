@@ -1,0 +1,106 @@
+@at-root {
+    @-ms-viewport {
+        width: device-width
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    font: {
+        family: 'Roboto', sans-serif;
+        weight: normal;
+        size: 100%;
+    }
+
+    &::before,
+    &::after {
+        box-sizing: inherit;
+    }
+}
+
+html {
+    box-sizing: border-box;
+    -ms-overflow-style: scrollbar;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1;
+
+    overflow: {
+        x: hidden;
+        y: scroll
+    }
+
+    @include rem-baseline;
+
+    //@media (max-width: 400px) {
+    //    @include rem-baseline(75%);
+    //}
+    //
+    //@media (min-width: 800px) {
+    //    @include rem-baseline(125%);
+    //}
+
+    &.disabledScroll {
+        // position: fixed;
+        // overflow: hidden;
+
+        // body {
+        //     position: fixed;
+        //     overflow: hidden;
+        // }
+    }
+}
+
+.relative {
+    position: relative;
+}
+
+::after,
+::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@for $i from 1 through 5 {
+
+    h#{6 - $i},
+    .h#{6 - $i} {
+        font-size: rem(42px / 6 * $i);
+
+        @media(max-width: map-get($grid-breakpoints, md)) {
+            font-size: rem(32px / 6 * $i);
+        }
+    }
+}
+
+b {
+    font-weight: bold;
+}
+
+//a[target="_blank"]:after {
+//    content: '\EA60';
+//    font-family: font('icons');
+//}
+
+img {
+    max-width: 100%;
+}
+
+@each $margin in 5, 10, 15, 20, 25, 30, 35, 40, 50 {
+    .m#{$margin} { margin: rem(unquote($margin + 'px')) }
+    .mt#{$margin} { margin-top: rem(unquote($margin + 'px')) }
+    .mb#{$margin} { margin-bottom: rem(unquote($margin + 'px')) }
+    .mr#{$margin} { margin-right: rem(unquote($margin + 'px')) }
+    .ml#{$margin} { margin-left: rem(unquote($margin + 'px')) }
+}

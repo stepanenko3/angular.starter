@@ -1,0 +1,82 @@
+<div class="modal__back" (click)="onClose()"></div>
+<div class="modal__content">
+    <div class="modal__close" *ngIf="closeButton" (click)="onClose()">
+        <i class="fs fs-close"></i>
+    </div>
+
+    <app-module-loading [isLoading]="inProgressSocial || inProgress" [overflow]="true"></app-module-loading>
+
+    <div [ngSwitch]="registerState">
+        <div class="from-inner" *ngSwitchCase="true">
+            <div class="modal__header">{{ 'AUTH_MODAL.REGISTER.HEADER' | translate }}</div>
+            <form class="form" [formGroup]="regForm">
+                <div class="form-field" [class.form-field_error]="regForm.get('first_name').invalid && regForm.get('first_name').touched">
+                    <label class="form-field__label" for="frFirst_name">{{ 'FORM.FIRST_NAME' | translate }}</label>
+                    <input class="form-field__input" id="frFirst_name" formControlName="first_name" [placeholder]="'FORM.REQUIRED' | translate"
+                        type="text">
+                </div>
+
+                <div class="form-field" [class.form-field_error]="regForm.get('last_name').invalid && regForm.get('last_name').touched">
+                    <label class="form-field__label" for="frLast_name">{{ 'FORM.LAST_NAME' | translate }}</label>
+                    <input class="form-field__input" id="frLast_name" formControlName="last_name" [placeholder]="'FORM.REQUIRED' | translate"
+                        type="text">
+                </div>
+
+                <div class="form-field" [class.form-field_error]="regForm.get('email').invalid && regForm.get('email').touched">
+                    <label class="form-field__label" for="frEmail">{{ 'FORM.EMAIL' | translate }}</label>
+                    <input class="form-field__input" id="frEmail" formControlName="email" [placeholder]="'FORM.REQUIRED' | translate"
+                        type="email">
+                </div>
+
+                <div class="form-field" [class.form-field_error]="regForm.get('phone').invalid && regForm.get('phone').touched">
+                    <label class="form-field__label" for="frPhone">{{ 'FORM.PHONE' | translate }}</label>
+                    <app-intl-tel formControlName="phone" inputId="frPhone" [allowDropDown]="false"></app-intl-tel>
+                </div>
+
+                <div class="form-field" [class.form-field_error]="regForm.get('password').invalid && regForm.get('password').touched">
+                    <label class="form-field__label" for="frPassword">{{ 'FORM.PASSWORD' | translate }}</label>
+                    <input class="form-field__input" id="frPassword" formControlName="password" [placeholder]="'FORM.REQUIRED' | translate"
+                        type="password">
+                </div>
+            </form>
+        </div>
+        <div class="from-inner" *ngSwitchDefault>
+            <div class="modal__header">{{ 'AUTH_MODAL.AUTH.HEADER' | translate }}</div>
+            <form class="form" autocomplete="off" [formGroup]="authForm">
+
+                <div class="form-field" [class.form-field_error]="authForm.get('email').invalid && authForm.get('email').touched">
+                    <label class="form-field__label" for="faEmail">{{ 'FORM.EMAIL' | translate }}</label>
+                    <input class="form-field__input" id="faEmail" formControlName="email" [placeholder]="'FORM.REQUIRED' | translate"
+                        type="email">
+                </div>
+
+                <div class="form-field" [class.form-field_error]="authForm.get('password').invalid && authForm.get('password').touched">
+                    <label class="form-field__label" for="faPassword">{{ 'FORM.PASSWORD' | translate }}</label>
+                    <input class="form-field__input" id="faPassword" formControlName="password" [placeholder]="'FORM.REQUIRED' | translate"
+                        type="password">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="modal-btn-block">
+        <div class="modal-btn-block__i">
+            <div class="modal__btn" [ngSwitch]="registerState" (click)="submit()">
+                <ng-container *ngSwitchCase="true">{{ 'AUTH_MODAL.REGISTER.BUTTON' | translate }}</ng-container>
+                <ng-container *ngSwitchDefault>{{ 'AUTH_MODAL.AUTH.BUTTON' | translate }}</ng-container>
+            </div>
+            <div class="modal__btn modal__btn_link" (click)="registerState = !registerState" [ngSwitch]="registerState">
+                <ng-container *ngSwitchCase="true">{{ 'AUTH_MODAL.REGISTER.LINK' | translate }}</ng-container>
+                <ng-container *ngSwitchDefault>{{ 'AUTH_MODAL.AUTH.LINK' | translate }}</ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="social-login">
+        <div class="social-login__header">{{ 'AUTH_MODAL.AUTH_WITH' | translate }}</div>
+        <div class="social-login__i">
+            <div (click)="authWithProvider('facebook')" class="social-login__item social-login__facebook">Facebook</div>
+            <div (click)="authWithProvider('google')" class="social-login__item social-login__google">Google</div>
+        </div>
+    </div>
+</div>

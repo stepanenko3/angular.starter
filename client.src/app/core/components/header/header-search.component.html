@@ -1,0 +1,44 @@
+<div appDropdown>
+    <div class="nav-item nav-item_mobile" appDropdownOpen>
+        <div class="nav-item__wr">
+            <i class="fs fs-search"></i>
+        </div>
+    </div>
+    <div class="nav-search" appDropdownNotClosableZone [class.nav-search_open]="dropdownState"
+        [class.nav-search_loading]="isSearching">
+        <div class="nav-search__i">
+            <label>
+                <input class="nav-search__input" type="text" [attr.placeholder]="placeholder" autocomplete="off"
+                    [(ngModel)]="query" (keyup.enter)="navSearch()">
+            </label>
+            <i class="nav-search__icon fs fs-search" (click)="navSearch()"></i>
+            <div class="nav-search__icon-loading"></div>
+        </div>
+        <div class="nav-search__area clearfix">
+            <div class="nav-search__content">
+                <ng-container *ngIf="results?.products?.length">
+                    <div class="nav-search-result" *ngFor="let r of results.products" [routerLink]="['/catalog', r.alt]">
+                        <b>{{ 'HEADER.SEARCH.PRODUCT' | translate }}</b><span>{{ r.descriptions | valueByLang:'name' }}</span>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="results?.articles?.length">
+                    <div class="nav-search-result" *ngFor="let r of results.articles" [routerLink]="['/blog', r.alt]">
+                        <b>{{ 'HEADER.SEARCH.ARTICLE' | translate }}</b><span>{{ r.descriptions | valueByLang:'title'
+                            }}</span>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="results?.categories?.length">
+                    <div class="nav-search-result" *ngFor="let r of results.categories" [routerLink]="['/catalog/category', r.alt]">
+                        <b>{{ 'HEADER.SEARCH.CATEGORY' | translate }}</b><span>{{ r.descriptions | valueByLang:'name'
+                            }}</span>
+                    </div>
+                </ng-container>
+
+                <div *ngIf="!results?.products?.length && !results?.categories?.length && !results?.articles?.length"
+                    class="nav-search__empty">
+                    {{ 'HEADER.SEARCH.PRESS' | translate }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

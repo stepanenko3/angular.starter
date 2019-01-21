@@ -1,0 +1,63 @@
+.page-empty {
+  display: block;
+  text-align: center;
+  padding: 0 rem(15px);
+  height: 100%;
+
+  &--left {
+    text-align: left;
+    padding-left: 0;
+  }
+
+  &__image {
+    margin: rem(20px) 0 rem(40px);
+
+    .fs {
+      font-size: rem(68px);
+      background: #f2f2f2;
+      padding: rem(30px);
+      border-radius: 50%;
+    }
+  }
+
+  &__title {
+    display: block;
+    color: color('dark');
+    font-size: rem(17px);
+    font-weight: 700;
+  }
+
+  &__text {
+    display: block;
+    margin-top: rem(9px);
+    color: #848484;
+    line-height: rem(17px);
+    font-size: rem(16px);
+  }
+
+  &__button {
+    display: inline-block;
+    color: color('primary');
+    padding: 0 rem(10px);
+    font-size: rem(17px);
+    margin: rem(35px) auto 0;
+    cursor: pointer;
+
+    >span {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &:after {
+      font-family: font('icons');
+      content: icon('arrow-right');
+      vertical-align: middle;
+      font-size: rem(14px);
+      margin-left: rem(3px);
+      text-decoration: none;
+    }
+  }
+}

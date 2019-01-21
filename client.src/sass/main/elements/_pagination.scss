@@ -1,0 +1,131 @@
+.pagination .ngx-pagination {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+
+    &::before,
+    &::after {
+        content: ' ';
+        display: table;
+    }
+
+    &::after {
+        clear: both
+    }
+
+    li {
+        font-size: rem(16px);
+        width: rem(23px);
+        min-width: rem(23px);
+        height: rem(23px);
+        text-align: center;
+        line-height: rem(23px);
+        border-radius: 50%;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        margin: 0 rem(2px);
+        padding: 0;
+        list-style: none;
+        transition: all .3s;
+
+        &:first-child {
+            margin-left: 0
+        }
+
+        &:last-child {
+            margin-right: 0
+        }
+    }
+
+    a,
+    button {
+        color: #111;
+        display: block;
+        padding: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all .3s;
+    }
+
+    a:hover,
+    button:hover {
+        background: transparent
+    }
+
+    .current {
+        font-weight: bold;
+        cursor: default;
+        background: color('primary');
+        color: #fefefe;
+    }
+
+    .disabled {
+        color: rgba(17, 17, 17, .6);
+        padding: 0;
+        cursor: default;
+    }
+
+    .ellipsis::after {
+        display: none;
+        padding: 0.1875rem 0.625rem;
+        color: #111;
+    }
+
+    .pagination-previous,
+    .pagination-next {
+        font-size: 0;
+        transition: all .3s;
+
+        &.disabled {
+            background: transparent;
+
+            &:hover {
+                background: transparent
+            }
+        }
+    }
+
+    .pagination-previous {
+
+        a::before,
+        &.disabled::before {
+            font-family: font('icons');
+            content: icon('arrow-left');
+            font-size: rem(12px);
+            display: inline-block;
+            margin-right: 0;
+            transition: all .3s;
+        }
+
+        &:not(.disabled):hover a::before {
+            transform: translate3d(rem(-5px), 0, 0);
+        }
+    }
+
+    .pagination-next {
+
+        a::after,
+        &.disabled::after {
+            font-family: font('icons');
+            content: icon('arrow-right');
+            font-size: rem(12px);
+            display: inline-block;
+            margin-left: 0;
+            transition: all .3s;
+        }
+
+        &:not(.disabled):hover a::after {
+            transform: translate3d(rem(5px), 0, 0);
+        }
+    }
+
+    .show-for-sr {
+        position: absolute !important;
+        width: rem(1px);
+        height: rem(1px);
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+    }
+}

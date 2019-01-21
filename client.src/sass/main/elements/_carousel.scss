@@ -1,0 +1,50 @@
+.carousel {
+    &:hover &__arrow {
+        &.left {
+            transform: translate3d(0, 0, 0);
+        }
+
+        &.right {
+            transform: scaleX(-1) translate3d(0, 0, 0);
+        }
+    }
+
+    &__arrow {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: rem(50px);
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        cursor: pointer;
+        transition: all .3s;
+        background: rgba(color('white'), .5);
+
+        &.right {
+            right: 0;
+            transform: scaleX(-1) translate3d(-100%, 0, 0);
+            filter: FlipH;
+        }
+
+        &.left {
+            left: 0;
+            transform: translate3d(-100%, 0, 0);
+        }
+
+        &:before {
+            display: inline-block;
+            font-family: font('icons');
+            content: icon('arrow-left');
+            color: color('dark');
+            font-size: rem(21px);
+            text-decoration: none;
+        }
+
+        &.disabled {
+            opacity: .5;
+        }
+    }
+}

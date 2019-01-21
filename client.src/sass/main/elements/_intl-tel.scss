@@ -1,0 +1,71 @@
+.intl-tel {
+    display: flex;
+    align-items: center;
+
+    &-flag {
+        position: relative;
+
+        &__selected {
+            display: flex;
+            align-items: center;
+            padding: rem(10px) 0;
+        }
+
+        &.dropdown &__selected:after {
+            font-size: rem(12px);
+            margin-left: rem(5px);
+            content: icon('arrow-down');
+            font-family: font('icons');
+        }
+
+        &.dropdown_open &__selected:after {
+            content: icon('arrow-up');
+        }
+
+        &__list {
+            max-height: rem(300px);
+            width: rem(300px);
+            overflow: auto;
+            padding: rem(5px) 0;
+            left: 0;
+            z-index: 300;
+        }
+
+        &__item {
+            display: flex;
+            align-items: center;
+            padding: rem(5px) rem(10px);
+            cursor: pointer;
+            font-size: rem(13px);
+
+            &:hover {
+                background: color('gray');
+            }
+
+            .flag {
+                margin-right: rem(10px);
+            }
+        }
+
+        &__divider {
+            display: block;
+            height: rem(1px);
+            margin: rem(5px) 0;
+            background: color('gray');
+        }
+
+        &__country-name {
+
+        }
+
+        &__dial-code {
+            display: inline-block;
+            margin-left: rem(10px);
+        }
+    }
+
+    &__input {
+        padding-left: rem(5px);
+        font-size: rem(16px);
+    }
+}

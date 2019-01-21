@@ -1,0 +1,158 @@
+$colors: ('gray': #f7f7f7,
+'primary': #0366d6,
+// 'primary': #fb4509,
+'dark': #000,
+'error': #ff3b30,
+'white': #fff,
+);
+
+$rem-baseline: 16px !default;
+$rem-fallback: false !default;
+$rem-px-only: false !default;
+$icons-class: "fs";
+$fonts-path: "/assets/fonts" !default;
+
+$fonts: ('text': '\'Roboto\', sans-serif',
+'header': sans-serif,
+'icons': 'FontIcons',
+);
+
+$z-layers: ('sidebar': 999999,
+'sidebar__back' : 1001,
+'sidebar-footer' : 1002,
+
+'nav-cart-pinned': 100,
+'cart__header': 2,
+'cart__footer': 2,
+'cart-product__discount': 3,
+
+'claps__increment': 5,
+'claps__button': 3,
+
+'dropdown__area': 1,
+
+'filter__counter': 3,
+
+'footer-media__i': 2,
+
+'checkout-wizard__item': 2,
+'checkout-user__select-icon': 1,
+
+'form-field__select:before': 1,
+'form-search__area': 3,
+
+'enter-screen__circle': 2,
+'enter-screen__text': 3,
+'enter-screen__video': 0,
+// 'enter-screen__video:before': 1,
+
+'front-col:before': 0,
+'front-col__bg': 0,
+'front-col__i': 2,
+'front-col__content': 1,
+
+'cb-item:before': 0,
+'cb-item__img::span': 0,
+
+'header': 10000,
+'header-nav': 10,
+'nav': 2,
+'nav--pinned': 100,
+'nav:after': 1,
+'nav-catalog__area': 999,
+'nav-currency:before': 1,
+'nav-item': 2,
+'nav-menu__item--dropdown:before': 2,
+'nav-search__area': 3,
+'nav-cart': 10000,
+'nav-cart__content': 2,
+'nav-cart__close': 100,
+
+'product-card__labels': 100,
+);
+
+$icons: ('heart-o': "\ea01",
+'shopping-bag': "\ea02",
+'filter': "\ea03",
+'menu': "\ea04",
+'shopping-cart': "\ea05",
+'close': "\ea06",
+'check': "\ea07",
+'minus': "\ea08",
+'plus': "\ea09",
+'arrow-left': "\ea10",
+'arrow-right': "\ea11",
+'arrow-up': "\ea12",
+'arrow-down': "\ea13",
+'play': "\ea14",
+'play-o': "\ea15",
+'stop': "\ea16",
+'stop-o': "\ea17",
+'pause': "\ea18",
+'star': "\ea19",
+'star-o': "\ea20",
+'qr-code': "\ea21",
+'avatar': "\ea22",
+'reload': "\ea23",
+'view': "\ea24",
+'warning': "\ea25",
+'wallet': "\ea26",
+'edit': "\ea27",
+'reply': "\ea28",
+'share': "\ea29",
+'heart': "\ea30",
+'scales': "\ea31",
+'search': "\ea32",
+'credit-card': "\ea33",
+'gift': "\ea34",
+'package': "\ea35",
+'address-book': "\ea36",
+'shield': "\ea37",
+'copy': "\ea38",
+'whatsapp': "\ea39",
+'email': "\ea40",
+'facebook': "\ea41",
+'google-plus': "\ea42",
+'telegram': "\ea43",
+'twitter': "\ea44",
+'video-camera': "\ea45",
+'equal': "\ea46",
+'address': "\ea47",
+'settings': "\ea48",
+'credit-card-contactless': "\ea49",
+'credit-card-chip': "\ea50",
+'network': "\ea51",
+'dashboard': "\ea52",
+'list': "\ea53",
+'factory': "\ea54",
+'user': "\ea55",
+'clap': "\ea56",
+'external-link': "\ea57",
+'dollar': "\ea58",
+'global': "\ea59",
+'slack': "\ea60",
+'instagram': "\ea61",
+);
+
+$enable-grid-classes: true;
+
+$grid-breakpoints: (xs: 0,
+sm: 576px,
+md: 768px,
+lg: 992px,
+xl: 1200px,
+) !default;
+
+@include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
+@include _assert-starts-at-zero($grid-breakpoints);
+
+$container-max-widths: (sm: 540px,
+md: 720px,
+lg: 960px,
+xl: 1140px,
+) !default;
+
+@include _assert-ascending($container-max-widths, '$container-max-widths');
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;

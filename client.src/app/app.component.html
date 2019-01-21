@@ -1,0 +1,12 @@
+<ng-progress [color]="'#2199e8'"></ng-progress>
+<app-header></app-header>
+<div class="page_content" [class.catalog-open]="catalogState">
+    <main [@routerTransition]="getState(o)">
+        <router-outlet #o="outlet"></router-outlet>
+    </main>
+    <app-footer class="footer-wrapper"></app-footer>
+</div>
+<!-- <app-custom-mouse></app-custom-mouse> -->
+<!-- <div class="demo-loader">
+    <div class="demo-loader__bg"></div>
+</div> -->

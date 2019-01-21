@@ -1,0 +1,10 @@
+.alert {
+    display: block;
+    padding: rem(10px);
+    border-radius: rem(3px);
+    background: color('gray');
+
+    &_error {
+        background: rgba(color('error'), .15);
+    }
+}

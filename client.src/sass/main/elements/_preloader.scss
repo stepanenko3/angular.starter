@@ -1,0 +1,51 @@
+.module-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, .9);
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    &--rounded {
+        border-radius: rem(15px);
+        left: rem(-10px);
+        top: rem(-10px);
+        height: calc(100% + #{rem(20px)});
+        width: calc(100% + #{rem(20px)});
+    }
+
+    &--overflow {
+        max-width: 100%;
+        max-height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    &--relative {
+        position: relative;
+        min-height: rem(100px);
+        display: none;
+    }
+
+    &--show {
+        opacity: 1;
+        visibility: visible;
+        display: flex;
+    }
+
+    &__image {
+        background: url('/assets/img/loading.svg') no-repeat center;
+        background-size: contain;
+        width: rem(64px);
+        height: rem(64px);
+        max-width: 90%;
+        max-height: 90%;
+    }
+}

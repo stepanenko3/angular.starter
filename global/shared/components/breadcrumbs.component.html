@@ -1,0 +1,10 @@
+<div class="breadcrumbs__item" *ngFor="let item of breadcrumbs; index as i" [ngSwitch]="!!item.link && !last">
+    <a *ngSwitchCase="true" [routerLink]="item.link">
+        {{ item.name | translate:getOptions(item.options, {name: item?.options?.names ? (item.options.names |
+        valueByLang) : ''}) }}
+    </a>
+    <span *ngSwitchDefault>
+        {{ item.name | translate:getOptions(item.options, {name: item?.options?.names ? (item.options.names |
+        valueByLang) : ''}) }}
+    </span>
+</div>

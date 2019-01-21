@@ -1,0 +1,171 @@
+@font-face {
+    font-family: font('icons');
+    src: url('#{$fonts-path}/#{font("icons")}.eot?y132ci');
+    src: url('#{$fonts-path}/#{font("icons")}.eot?y132ci#iefix') format('embedded-opentype'),
+    url('#{$fonts-path}/#{font("icons")}.ttf?y132ci') format('truetype'),
+    url('#{$fonts-path}/#{font("icons")}.woff?y132ci') format('woff'),
+    url('#{$fonts-path}/#{font("icons")}.svg?y132ci##{font("icons")}') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.#{$icons-class} {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-family: font('icons');
+    font-weight: 300;
+    text-rendering: auto;
+    line-height: 1;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+
+    &-lg {
+        font-size: 1.33333333em;
+        line-height: 0.75em;
+        vertical-align: -.0667em;
+    }
+
+    &-xs {
+        font-size: .75em;
+    }
+
+    &-sm {
+        font-size: .875em;
+    }
+
+    @for $i from 1 to 10 {
+        &-#{$i}x {
+            font-size: #{$i}em;
+        }
+    }
+
+    &-fw {
+        text-align: center;
+        width: 1.25em;
+    }
+
+    &-ul {
+        list-style-type: none;
+        margin-left: 2.5em;
+        padding-left: 0;
+    }
+
+    &-ul>li {
+        position: relative;
+    }
+
+    &-li {
+        left: -2em;
+        position: absolute;
+        text-align: center;
+        width: 2em;
+        line-height: inherit;
+    }
+
+    &-border {
+        border: solid 0.08em color('gray');
+        border-radius: .1em;
+        padding: .2em .25em .15em;
+    }
+
+    &-pull-left {
+        float: left;
+    }
+
+    &-pull-right {
+        float: right;
+    }
+
+    #{&-10x}#{&-pull-left} {
+        margin-right: .3em;
+    }
+
+    &#{&-pull-right} {
+        margin-left: .3em;
+    }
+
+    &-rotate-90 {
+        -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    &-rotate-180 {
+        -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    &-rotate-270 {
+        -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+    }
+
+    &-flip-horizontal {
+        -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+        -webkit-transform: scale(-1, 1);
+        transform: scale(-1, 1);
+    }
+
+    &-flip-vertical {
+        -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+        -webkit-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+
+    #{&-flip-horizontal}#{&-flip-vertical} {
+        -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+        -webkit-transform: scale(-1, -1);
+        transform: scale(-1, -1);
+    }
+
+    :root &-rotate-90,
+    :root &-rotate-180,
+    :root &-rotate-270,
+    :root &-flip-horizontal,
+    :root &-flip-vertical {
+        -webkit-filter: none;
+        filter: none;
+    }
+
+    &-stack {
+        display: inline-block;
+        height: 2em;
+        line-height: 2em;
+        position: relative;
+        vertical-align: middle;
+        width: 2em;
+
+        &-1x,
+        &-2x {
+            left: 0;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+        }
+
+        &-1x {
+            line-height: inherit;
+        }
+
+        &-2x {
+            font-size: 2em;
+        }
+    }
+    
+    @each $key, $value in $icons {
+        &-#{$key} {
+            &:before {
+                content: icon($key);
+            }
+        }
+    }
+
+    &-google {
+        &:before {
+            content: icon('google-plus');
+        }
+    }
+}

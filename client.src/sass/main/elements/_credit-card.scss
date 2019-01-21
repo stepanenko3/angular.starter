@@ -1,0 +1,63 @@
+.credit-card {
+    margin-top: rem(30px);
+    background: color('primary');
+    padding: rem(16px) rem(32px) rem(32px);
+    border-radius: rem(10px);
+    color: rgba(color('white'), 0.5);
+    width: rem(440px);
+    max-width: 100%;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: rem(30px);
+    }
+
+    &__title {
+        color: color('white');
+        float: left;
+        font-size: rem(21px);
+        height: rem(50px);
+        line-height: rem(50px);
+    }
+
+    &__logo {
+        height: rem(50px);
+    }
+
+    &__number &__input {
+        font-size: rem(32px);
+    }
+
+    &__label {
+        display: block;
+        margin-bottom: rem(5px);
+        transition: all .3s ease;
+
+        &_invalid {
+            color: color('error');
+        }
+    }
+
+    input {
+        background-color: transparent;
+        border: 0;
+        color: color('white');
+        max-width: 100%;
+        font: inherit;
+        width: auto;
+
+        &::placeholder {
+            color: rgba(color('white'), .8);
+        }
+
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: rem(30px);
+    }
+}

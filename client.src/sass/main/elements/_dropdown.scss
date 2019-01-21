@@ -1,0 +1,82 @@
+.dropdown {
+    position: relative;
+    display: block;
+
+    @media(max-width: map_get($grid-breakpoints, sm)) {
+        position: static;
+    }
+
+    &__toggle {
+        position: relative;
+        display: block;
+        height: rem(40px);
+        line-height: rem(40px);
+        padding: 0 rem(15px);
+        cursor: pointer;
+    }
+
+    &__area {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #fff;
+        border-radius: rem(2px);
+        overflow: hidden;
+        border: rem(1px) solid #d6d6d6;
+        opacity: 0;
+        visibility: hidden;
+        z-index: z(dropdown__area);
+
+        @media(max-width: map_get($grid-breakpoints, sm)) {
+            right: auto;
+            left: 0;
+            width: 100%;
+        }
+
+        &_right {
+            left: 0;
+            right: initial;
+        }
+    }
+
+    &_open {
+        .dropdown {
+            &__area, &__toggle:after, &__toggle:before {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__content {
+        width: rem(300px);
+        padding: rem(10px) rem(15px);
+
+        &_250 {
+            width: rem(200px)
+        }
+        &_200 {
+            width: rem(200px)
+        }
+        &_150 {
+            width: rem(150px)
+        }
+        &_100 {
+            width: rem(100px)
+        }
+        &_75 {
+            width: rem(75px);
+            padding: rem(5px);
+        }
+        &_50 {
+            width: rem(50px);
+            padding: rem(5px);
+        }
+    }
+
+    &__header {
+        text-align: center;
+        padding: rem(5px) 0 rem(10px);
+        font-size: rem(16px);
+    }
+}

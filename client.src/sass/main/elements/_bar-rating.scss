@@ -1,0 +1,41 @@
+.br {
+    &-unit {
+        margin-right: rem(2px);
+        font-size: rem(22px);
+
+        @media(max-width: map-get($grid-breakpoints, md)) {
+            font-size: rem(18px);
+        }
+
+        &:after {
+            content: "\2605";
+            color: #d2d2d2;
+            transition: all .3s;
+        }
+
+        &-s {
+            align-items: center
+        }
+    }
+
+    &-sm &-unit {
+        font-size: rem(20px);
+    }
+
+    &-xs &-unit {
+        font-size: rem(18px);
+        margin-right: 0;
+    }
+
+    &-xxs &-unit {
+        font-size: rem(16px);
+        margin-right: 0;
+    }
+
+    &-selected:after {
+        color: color('primary')
+    }
+    &-active:after {
+        color: color('primary')
+    }
+}
