@@ -10,7 +10,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { ShareButtonsModule } from '@ngx-share/buttons';
-import { ShareButtonsOptions } from '@ngx-share/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -34,13 +33,6 @@ import { appRoutes } from './app.routing';
 registerLocaleData(localeUk);
 registerLocaleData(localeRu);
 registerLocaleData(localeEn);
-
-const customOptions: ShareButtonsOptions = {
-    include: ['facebook', 'telegram', 'twitter', 'whatsapp', 'messenger', 'email'],
-    exclude: [],
-    theme: 'modern-dark',
-    autoSetMeta: true,
-};
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -74,8 +66,13 @@ export function createTranslateLoader(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
-        ShareButtonsModule.forRoot({ options: customOptions }),
-        NgProgressModule.forRoot(),
+        ShareButtonsModule.withConfig({
+            include: ['facebook', 'telegram', 'twitter', 'whatsapp', 'messenger', 'email'],
+            exclude: [],
+            theme: 'modern-dark',
+            autoSetMeta: true,
+        }),
+        NgProgressModule,
         NgxPermissionsModule.forRoot(),
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ],

@@ -41,8 +41,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     public isMobile: boolean;
 
-    public h1: string;
-    public text: string;
+    public text1: string;
+    public text2: string;
+    public text3: string;
 
     private sub: Subscription = new Subscription();
 
@@ -51,12 +52,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.h1 = this.textToChars('Магазин техники Apple');
-        this.text = this.textToChars(
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-            + 'Ad aspernatur atque beatae deserunt dolores doloribus eius exercitationem hic,'
-            + 'incidunt laboriosam natus odit officia perspiciatis quae reprehenderit saepe sed suscipit ullam.'
-        );
+        this.text1 = this.textToChars('Artem');
+        this.text2 = this.textToChars('Stepanenko');
+        this.text3 = this.textToChars('22 y.o. Developer from Kiev, Ukraine');
 
         this.setMeta();
         this.sub.add(this.translate.onLangChange.subscribe(() => this.setMeta()));
@@ -96,9 +94,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     private doAnimate() {
         const tl = new TimelineMax();
         tl
-            .staggerFrom('.enter-screen__title .letter', .5, { y: 15, opacity: 0 }, .075, 0)
-            .staggerFrom('.enter-screen__text .letter', .5, { y: 15, opacity: 0 }, .015, 0)
-            .from('.enter-screen__circle', .9, { scale: .1, y: '-50%', opacity: 0, ease: Back.easeOut.config(1.7) }, .65);
+        .staggerFrom('.s01__header .letter', .9, { y: 20, opacity: 0 }, .09, .75)
+        .staggerFrom('.s01__text .letter', .6, { y: 5, opacity: 0 }, .04, '-=0.8');
     }
 
     ngOnDestroy(): void {

@@ -1,7 +1,7 @@
 $colors: ('gray': #f7f7f7,
 'primary': #0366d6,
 // 'primary': #fb4509,
-'dark': #000,
+'dark': #333,
 'error': #ff3b30,
 'white': #fff,
 );
@@ -17,58 +17,7 @@ $fonts: ('text': '\'Roboto\', sans-serif',
 'icons': 'FontIcons',
 );
 
-$z-layers: ('sidebar': 999999,
-'sidebar__back' : 1001,
-'sidebar-footer' : 1002,
-
-'nav-cart-pinned': 100,
-'cart__header': 2,
-'cart__footer': 2,
-'cart-product__discount': 3,
-
-'claps__increment': 5,
-'claps__button': 3,
-
-'dropdown__area': 1,
-
-'filter__counter': 3,
-
-'footer-media__i': 2,
-
-'checkout-wizard__item': 2,
-'checkout-user__select-icon': 1,
-
-'form-field__select:before': 1,
-'form-search__area': 3,
-
-'enter-screen__circle': 2,
-'enter-screen__text': 3,
-'enter-screen__video': 0,
-// 'enter-screen__video:before': 1,
-
-'front-col:before': 0,
-'front-col__bg': 0,
-'front-col__i': 2,
-'front-col__content': 1,
-
-'cb-item:before': 0,
-'cb-item__img::span': 0,
-
-'header': 10000,
-'header-nav': 10,
-'nav': 2,
-'nav--pinned': 100,
-'nav:after': 1,
-'nav-catalog__area': 999,
-'nav-currency:before': 1,
-'nav-item': 2,
-'nav-menu__item--dropdown:before': 2,
-'nav-search__area': 3,
-'nav-cart': 10000,
-'nav-cart__content': 2,
-'nav-cart__close': 100,
-
-'product-card__labels': 100,
+$z-layers: (
 );
 
 $icons: ('heart-o': "\ea01",
