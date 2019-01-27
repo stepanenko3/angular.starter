@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform, ChangeDetectorRef, EventEmitter, OnDestroy } from '@angular/core';
-import { TranslateService, LangChangeEvent, DefaultLangChangeEvent } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Pipe({
     name: 'valueByLang',
@@ -11,8 +11,8 @@ export class ValueByLangPipe implements PipeTransform, OnDestroy {
     lastKey: string;
     lastLang: string;
 
-    onLangChange: EventEmitter<LangChangeEvent>;
-    onDefaultLangChange: EventEmitter<DefaultLangChangeEvent>;
+    onLangChange: EventEmitter<any>;
+    onDefaultLangChange: EventEmitter<any>;
 
     constructor(
         private translate: TranslateService,

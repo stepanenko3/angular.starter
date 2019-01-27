@@ -67,6 +67,7 @@ import * as GlobalService from '@core/services';
         Service.StaticPageService,
         Service.HeaderService,
         Service.StartupService,
+        Service.ProjectService,
     ]
 })
 export class CoreModule {

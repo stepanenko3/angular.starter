@@ -45,10 +45,10 @@
                         <img src="https://stpnnk.top/public/img/laravel.png" />
                     </div>
                     <div class="skill__name">
-                        Laravel
+                        Node JS
                     </div>
                     <div class="skill__period">
-                        1,5+ years
+                        1+ year
                     </div>
                 </div>
             </div>
@@ -84,75 +84,10 @@
                         <img src="https://stpnnk.top/public/img/laravel.png" />
                     </div>
                     <div class="skill__name">
-                        Opencart
+                        Laravel
                     </div>
                     <div class="skill__period">
-                        4+ years
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="skill">
-                    <div class="skill__img">
-                        <img src="https://stpnnk.top/public/img/laravel.png" />
-                    </div>
-                    <div class="skill__name">
-                        Opencart
-                    </div>
-                    <div class="skill__period">
-                        4+ years
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="skill">
-                    <div class="skill__img">
-                        <img src="https://stpnnk.top/public/img/laravel.png" />
-                    </div>
-                    <div class="skill__name">
-                        Opencart
-                    </div>
-                    <div class="skill__period">
-                        4+ years
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="skill">
-                    <div class="skill__img">
-                        <img src="https://stpnnk.top/public/img/laravel.png" />
-                    </div>
-                    <div class="skill__name">
-                        Opencart
-                    </div>
-                    <div class="skill__period">
-                        4+ years
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="skill">
-                    <div class="skill__img">
-                        <img src="https://stpnnk.top/public/img/laravel.png" />
-                    </div>
-                    <div class="skill__name">
-                        Opencart
-                    </div>
-                    <div class="skill__period">
-                        4+ years
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="skill">
-                    <div class="skill__img">
-                        <img src="https://stpnnk.top/public/img/laravel.png" />
-                    </div>
-                    <div class="skill__name">
-                        Opencart
-                    </div>
-                    <div class="skill__period">
-                        4+ years
+                        2+ years
                     </div>
                 </div>
             </div>
@@ -162,8 +97,9 @@
 
 <section class="work" id="work">
     <div class="work__header">My projects</div>
-    <div class="work__i">
-        <a href="/reshop.html" class="work-item">
+    <app-module-loading [isLoading]="projectsLoading"></app-module-loading>
+    <div class="work__i" *ngIf="projects">
+        <a class="work-item" *ngFor="let project of projects" [routerLink]="project.slug">
             <div class="mockup">
                 <div class="mockup-imac">
                     <img class="mockup-imac__img" src="/public/img/imac-mockup.png">
@@ -180,10 +116,10 @@
             </div>
 
             <div class="work-item__title">
-                Современный интернет-магазин «ReShop»
+                {{ project.name }}
             </div>
             <div class="work-item__subtitle">
-                В разработке
+                {{ project.label }}
             </div>
         </a>
     </div>

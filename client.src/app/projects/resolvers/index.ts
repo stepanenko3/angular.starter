@@ -1,1 +1,1 @@
-export * from './static-page.resolver';
+export * from './project.resolver';

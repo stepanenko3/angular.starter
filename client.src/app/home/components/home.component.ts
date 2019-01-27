@@ -21,6 +21,7 @@ import { TimelineMax, Back } from 'gsap';
 import { Utils } from '@core/utils';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
+import { ProjectService } from '@client/core/services';
 
 @Component({
     moduleId: module.id,
@@ -36,7 +37,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         private config: ConfigService,
         private translate: TranslateService,
         private scrollToService: ScrollToService,
-        private preloader: PreloaderService, ) {
+        private preloader: PreloaderService,
+        private projectService: ProjectService) {
     }
 
     public isMobile: boolean;
@@ -44,6 +46,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     public text1: string;
     public text2: string;
     public text3: string;
+
+    public projectsLoading = true;
+    public projects: any[];
 
     private sub: Subscription = new Subscription();
 
@@ -63,6 +68,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.sub.add(this.scrollService.resize$.subscribe(() => {
             this.isMobile = window.innerWidth <= 768;
+            this.cd.detectChanges();
+        }));
+
+        this.sub.add(this.projectService.getProjects().subscribe(projects => {
+            this.projectsLoading = false;
+            this.projects = projects;
             this.cd.detectChanges();
         }));
     }

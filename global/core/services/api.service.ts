@@ -111,9 +111,10 @@ export class ApiService {
         );
     }
 
-    public get(url: string, params = {}): Observable<any> {
+    public get(url: string, params = {}, options = {}): Observable<any> {
         const headers = this.createHeader();
-        return this.httpClient.get(this.host + url, Object.assign({ headers: headers }, params)).pipe(
+        const rUrl = options['nonApi'] ? url : this.host + url;
+        return this.httpClient.get(rUrl, Object.assign({ headers: headers }, params)).pipe(
             map(data => {
                 return data;
             }),

@@ -8,19 +8,17 @@ import { Utils } from '@core/utils';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'static-page.component.html',
+    templateUrl: 'project.component.html',
 })
-export class StaticPageComponent implements OnInit, AfterViewInit {
+export class ProjectComponent implements OnInit, AfterViewInit {
 
-    public page: any;
+    public project: any;
 
     private sub: Subscription = new Subscription();
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private location: Location,
-        private breadcrumbsService: BreadcrumbsService,
-        private metaService: MetaService,
         private cd: ChangeDetectorRef,
         private preloader: PreloaderService,
         private router: Router,
@@ -28,20 +26,11 @@ export class StaticPageComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.sub.add(this.activatedRoute.params.subscribe(() => {
-            this.page = this.activatedRoute.snapshot.data['page'];
+            this.project = this.activatedRoute.snapshot.data['project'];
 
-            if (!this.page) {
+            if (!this.project) {
                 this.router.navigate(['/404'], { skipLocationChange: true });
             } else {
-                this.metaService.title = this.page.meta_title;
-                this.metaService.desc = this.page.meta_desc;
-                this.metaService.keys = this.page.meta_key;
-
-                this.breadcrumbsService.data = [
-                    { name: 'BREADCRUMBS.HOME', link: '/' },
-                    { name: this.page.title, link: '' }
-                ];
-
                 this.cd.detectChanges();
             }
         }));
