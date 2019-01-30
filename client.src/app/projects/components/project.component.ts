@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/index';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TimelineMax } from 'gsap';
 import { Utils } from '@core/utils';
+import { HeaderService } from '@client/core/services';
 
 @Component({
     moduleId: module.id,
@@ -12,6 +13,7 @@ import { Utils } from '@core/utils';
 })
 export class ProjectComponent implements OnInit, AfterViewInit {
 
+    public responsive: string;
     public project: any;
 
     private sub: Subscription = new Subscription();
@@ -22,11 +24,13 @@ export class ProjectComponent implements OnInit, AfterViewInit {
         private cd: ChangeDetectorRef,
         private preloader: PreloaderService,
         private router: Router,
+        private headerService: HeaderService,
     ) { }
 
     ngOnInit() {
         this.sub.add(this.activatedRoute.params.subscribe(() => {
             this.project = this.activatedRoute.snapshot.data['project'];
+            this.headerService.project = this.project;
 
             if (!this.project) {
                 this.router.navigate(['/404'], { skipLocationChange: true });
@@ -34,6 +38,8 @@ export class ProjectComponent implements OnInit, AfterViewInit {
                 this.cd.detectChanges();
             }
         }));
+
+        this.sub.add(this.headerService.responsive$.subscribe(res => this.responsive = res));
     }
 
     ngAfterViewInit() {

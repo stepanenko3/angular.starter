@@ -26,6 +26,7 @@ import { NouisliderModule } from 'ng2-nouislider';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { AvatarModule } from '@shared/components/avatar';
 
+import { NgsRevealModule } from 'ngx-scrollreveal';
 @NgModule({
     imports: [
         CommonModule,
@@ -49,6 +50,7 @@ import { AvatarModule } from '@shared/components/avatar';
         DpDatePickerModule,
 
         NouisliderModule,
+        NgsRevealModule,
     ],
     declarations: [
         GlobalComponent.BreadcrumbsComponent,
@@ -117,6 +119,7 @@ import { AvatarModule } from '@shared/components/avatar';
         TranslateModule,
 
         NouisliderModule,
+        NgsRevealModule,
 
         GlobalComponent.BreadcrumbsComponent,
         GlobalComponent.CounterInputComponent,

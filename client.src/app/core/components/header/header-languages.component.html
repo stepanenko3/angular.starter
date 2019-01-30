@@ -1,5 +1,0 @@
-<label class="nav-switch__language" *ngIf="list?.length">
-    <select (change)="change($event.target.value)">
-        <option *ngFor="let lang of list" [selected]="current === lang" [value]="lang">{{ lang }}</option>
-    </select>
-</label>

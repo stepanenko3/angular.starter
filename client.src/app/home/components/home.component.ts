@@ -21,7 +21,7 @@ import { TimelineMax, Back } from 'gsap';
 import { Utils } from '@core/utils';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
-import { ProjectService } from '@client/core/services';
+import { ProjectService, HeaderService } from '@client/core/services';
 
 @Component({
     moduleId: module.id,
@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         private scrollService: ScrollService,
         private cd: ChangeDetectorRef,
         private config: ConfigService,
+        private headerService: HeaderService,
         private translate: TranslateService,
         private scrollToService: ScrollToService,
         private preloader: PreloaderService,
@@ -57,6 +58,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.headerService.front = true;
+
         this.text1 = this.textToChars('Artem');
         this.text2 = this.textToChars('Stepanenko');
         this.text3 = this.textToChars('22 y.o. Developer from Kiev, Ukraine');
@@ -105,11 +108,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     private doAnimate() {
         const tl = new TimelineMax();
         tl
-        .staggerFrom('.s01__header .letter', .9, { y: 20, opacity: 0 }, .09, .75)
-        .staggerFrom('.s01__text .letter', .6, { y: 5, opacity: 0 }, .04, '-=0.8');
+        .staggerFrom('.s01__header .letter', .6, { y: 26, opacity: 0 }, .07, .75)
+        .from('.s01__animation', .9, { opacity: 0, x: 50 }, 1)
+        .staggerFrom('.s01__text .letter', .4, { y: 5, opacity: 0 }, .02, '-=0.6')
+        .from('.s01 .contact-me', .3, { y: 10, opacity: 0 }, '-=0.4');
     }
 
     ngOnDestroy(): void {
         this.sub.unsubscribe();
+        this.headerService.front = false;
     }
 }

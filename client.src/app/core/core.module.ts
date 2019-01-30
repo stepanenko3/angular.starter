@@ -28,9 +28,6 @@ import * as GlobalService from '@core/services';
 
         Component.AuthModalComponent,
         Component.HeaderComponent,
-        Component.HeaderCurrenciesComponent,
-        Component.HeaderLanguagesComponent,
-        Component.HeaderSearchComponent,
 
         Component.NotFoundComponent,
 

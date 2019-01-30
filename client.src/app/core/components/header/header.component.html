@@ -1,12 +1,27 @@
 <header class="header">
-    <div class="header-menu">
+    <div class="header-menu" *ngIf="front">
         <a href="#home" class="header-menu__item active">Home</a>
         <a href="#about" class="header-menu__item">About</a>
         <a href="#skills" class="header-menu__item">Skills</a>
         <a href="#work" class="header-menu__item">Work</a>
         <a href="#contact" class="header-menu__item">Contact</a>
     </div>
+    <a [routerLink]="['/']" class="header__project" *ngIf="!front">
+        {{ project?.name }}
+    </a>
+    <div class="header-responsive" *ngIf="!front">
+        <div class="header-responsive__item mobile" (click)="setResponsive('mobile')">
+            <i class="fa fa-mobile"></i>
+        </div>
+        <div class="header-responsive__item tablet" (click)="setResponsive('tablet')">
+            <i class="fa fa-mobile"></i>
+        </div>
+        <div class="header-responsive__item desktop" (click)="setResponsive('desktop')">
+            <i class="fa fa-mobile"></i>
+        </div>
+    </div>
     <div class="header-soc">
+        <a href="mailto:info@stpnnk.top" class="header-soc__item">info@stpnnk.top</a>
         <a href="https://www.instagram.com/stepanenko3/" target="_blank" class="header-soc__item">
             <i class="fs fs-instagram"></i>
         </a>
@@ -21,4 +36,3 @@
         </a>
     </div>
 </header>
-<div class="scroll-to-top" (click)="scrollToTop()" [class.scroll-to-top--visible]="scrollTop"></div>

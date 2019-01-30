@@ -4,71 +4,43 @@ import { Observable, BehaviorSubject } from 'rxjs';
 @Injectable()
 export class HeaderService {
 
+    private _responsive;
+    private _project;
     private _front = false;
-    private _isBlack = true;
-    private _pinned = false;
-    private _catalogState = false;
-    private _searchState = false;
 
+    private subjectResponsive = new BehaviorSubject<string>(this._responsive);
+    private subjectProject = new BehaviorSubject<any>(this._project);
     private subjectFront = new BehaviorSubject<boolean>(this._front);
-    private subjectBlack = new BehaviorSubject<boolean>(this._isBlack);
-    private subjectPinned = new BehaviorSubject<boolean>(this._pinned);
-    private catalogSubject = new BehaviorSubject<boolean>(this._catalogState);
-    private searchSubject = new BehaviorSubject<boolean>(this._searchState);
 
     constructor() { }
 
-    set catalogState(state: boolean) {
-        this._catalogState = state;
-        this.catalogSubject.next(state);
+    set responsive(bool: string) {
+        this._responsive = bool;
+        this.subjectResponsive.next(this._responsive);
     }
 
-    get catalogState(): boolean {
-        return this._catalogState;
+    get responsive(): string {
+        return this._responsive;
     }
 
-    get catalogState$(): Observable<boolean> {
-        return this.catalogSubject.asObservable();
+    get responsive$(): Observable<string> {
+        return this.subjectResponsive.asObservable();
     }
 
-    set searchState(state: boolean) {
-        this._searchState = state;
-        this.searchSubject.next(state);
+
+    set project(bool: any) {
+        this._project = bool;
+        this.subjectProject.next(this._project);
     }
 
-    get searchState(): boolean {
-        return this._searchState;
+    get project(): any {
+        return this._project;
     }
 
-    get searchState$(): Observable<boolean> {
-        return this.searchSubject.asObservable();
+    get project$(): Observable<any> {
+        return this.subjectProject.asObservable();
     }
 
-    set pinned(bool: boolean) {
-        this._pinned = bool;
-        this.subjectPinned.next(this._pinned);
-    }
-
-    get pinned(): boolean {
-        return this._pinned;
-    }
-
-    get pinned$(): Observable<boolean> {
-        return this.subjectPinned.asObservable();
-    }
-
-    set black(bool: boolean) {
-        this._isBlack = bool;
-        this.subjectBlack.next(this._isBlack);
-    }
-
-    get black(): boolean {
-        return this._isBlack;
-    }
-
-    get black$(): Observable<boolean> {
-        return this.subjectBlack.asObservable();
-    }
 
     set front(bool: boolean) {
         this._front = bool;

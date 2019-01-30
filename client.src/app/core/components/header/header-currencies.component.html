@@ -1,6 +1,0 @@
-<label class="nav-switch__currency" *ngIf="currencies?.length">
-    <select (change)="changeCurrency($event.target.value)">
-        <option *ngFor="let currency of currencies; trackBy: trackByFn" [selected]="currency.code == current.code"
-            [value]="currency.code">{{ currency.code }}</option>
-    </select>
-</label>

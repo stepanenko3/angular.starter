@@ -20,6 +20,7 @@ const ROUTES = [{
     RouterModule.forChild(ROUTES),
   ],
   declarations: [
+    Component.AnimationComponent,
     Component.HomeComponent,
   ],
 })
