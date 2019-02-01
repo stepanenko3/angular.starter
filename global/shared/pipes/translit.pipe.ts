@@ -40,18 +40,18 @@ export class TranslitPipe implements PipeTransform, OnDestroy {
 
         this._dispose();
 
-        if (!this.onLangChange) {
-            this.onLangChange = this.translate.onLangChange.subscribe(() => {
-                this.updateValue(value);
-            });
-        }
+        // if (!this.onLangChange) {
+        //     this.onLangChange = this.translate.onLangChange.subscribe(() => {
+        //         this.updateValue(value);
+        //     });
+        // }
 
         // subscribe to onDefaultLangChange event, in case the default language changes
-        if (!this.onDefaultLangChange) {
-            this.onDefaultLangChange = this.translate.onDefaultLangChange.subscribe(() => {
-                this.updateValue(value);
-            });
-        }
+        // if (!this.onDefaultLangChange) {
+        //     this.onDefaultLangChange = this.translate.onDefaultLangChange.subscribe(() => {
+        //         this.updateValue(value);
+        //     });
+        // }
 
         return this.value;
     }

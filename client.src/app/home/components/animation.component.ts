@@ -6,6 +6,7 @@ import {
     OnDestroy,
     OnInit,
     ViewChild,
+    HostListener,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { interval } from 'rxjs';
@@ -20,6 +21,8 @@ import { TimelineMax, Back } from 'gsap';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AnimationComponent implements OnInit, AfterViewInit, OnDestroy {
+
+    constructor() {}
 
     public frames = {
         start: [246.3, 215.3, 218.7, 184.6, 233.6, 217.1,
@@ -281,22 +284,38 @@ export class AnimationComponent implements OnInit, AfterViewInit, OnDestroy {
             592.4, 182.4, 557.6, 179.1, 584.4, 216.1],
     };
 
-    constructor() {}
-
     @ViewChild('animationCanvas') animationCanvas;
 
+    public fixed = false;
+
+    private windowFocus: boolean;
     private sub: Subscription = new Subscription();
     private secondsCounter = interval(2500);
 
-    ngOnInit(): void {
+    @HostListener('window:focus', ['$event']) onFocus(e: any): void {
+        this.windowFocus = true;
+        console.log('focus', this.windowFocus);
+    }
 
+    @HostListener('window:blur', ['$event']) onBlur(e: any): void {
+        this.windowFocus = false;
+        console.log('blur', this.windowFocus);
+    }
+
+    @HostListener('window:scroll', ['$event']) onscroll(e: any): void {
+        this.fixed = window.pageYOffset > 300;
+    }
+
+    ngOnInit(): void {
+        window.focus();
+        this.windowFocus = true;
     }
 
     ngAfterViewInit(): void {
         const ctx = this.animationCanvas.nativeElement.getContext('2d');
         ctx.lineWidth = 1;
         ctx.strokeStyle = 'rgba(51, 51, 51, 1.000)';
-        ctx.fillStyle = 'rgba(113, 113, 113, 1.000)';
+        ctx.fillStyle = '#d6bf86';
 
         const frames = Object.keys(this.frames).map(key => this.pad_array(this.frames[key], 102 * 6, 300));
         let stateKey = 0;
@@ -305,10 +324,13 @@ export class AnimationComponent implements OnInit, AfterViewInit, OnDestroy {
         const tl = new TimelineMax();
 
         this.secondsCounter.subscribe(() => {
-            stateKey = (stateKey + 1 >= frames.length) ? 1 : stateKey + 1;
-            tl.to(stateCache, 0.5, Object.assign(frames[stateKey], {
-                onUpdate: () => render(stateCache),
-            }));
+            console.log(this.windowFocus);
+            if (this.windowFocus) {
+                stateKey = (stateKey + 1 >= frames.length) ? 1 : stateKey + 1;
+                tl.to(stateCache, 0.5, Object.assign(frames[stateKey], {
+                    onUpdate: () => render(stateCache),
+                }));
+            }
         });
 
         function render(state) {

@@ -56,16 +56,16 @@ export class ValueByLangPipe implements PipeTransform, OnDestroy {
         this._dispose();
 
         if (!this.onLangChange) {
-            this.onLangChange = this.translate.onLangChange.subscribe(() => {
-                this.updateValue(this.lastValue, this.lastKey);
-            });
+            // this.onLangChange = this.translate.onLangChange.subscribe(() => {
+            //     this.updateValue(this.lastValue, this.lastKey);
+            // });
         }
 
         // subscribe to onDefaultLangChange event, in case the default language changes
         if (!this.onDefaultLangChange) {
-            this.onDefaultLangChange = this.translate.onDefaultLangChange.subscribe(() => {
-                this.updateValue(this.lastValue, this.lastKey);
-            });
+            // this.onDefaultLangChange = this.translate.onDefaultLangChange.subscribe(() => {
+            //     this.updateValue(this.lastValue, this.lastKey);
+            // });
         }
 
         return this.value;

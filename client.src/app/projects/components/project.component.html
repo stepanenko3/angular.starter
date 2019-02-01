@@ -1,1 +1,8 @@
-<iframe class="project" [attr.src]="project.url | safe:'resourceUrl'"></iframe>
+<div id="iframelive" class="project-iframe" [ngClass]="{ tablet: responsive === 'tablet', mobile: responsive === 'mobile' }">
+    <div class="project-iframe__wrapper">
+        <iframe [attr.src]="project.url | safe: 'resourceUrl'">
+            [Ваш браузер не поддерживает фреймы или же они запрещены вашими
+            настройками. Несморя на это вы можете просмотреть нужную страницу.
+        </iframe>
+    </div>
+</div>

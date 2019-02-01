@@ -2,60 +2,54 @@
     "slug": "camille",
     "url": "http://camille.stpnnk.top",
     "name": "Camille A",
-    "label": "Сайт салона красоты",
-    "images": {
-        "phone": "",
-        "tablet": "",
-        "desktop": ""
-    }
+    "label": "Design + Development",
+    "hours": "25 hours"
 }, {
     "slug": "camp",
     "url": "http://camp.stpnnk.top",
     "name": "Camp Study",
     "label": "Сайт лучшего британского ларея в Украние",
-    "images": {
-        "phone": "",
-        "tablet": "",
-        "desktop": ""
-    }
+    "hours": "100 hours"
 }, {
-    "slug": "camp",
-    "url": "http://camp.stpnnk.top",
-    "name": "Camp Study",
+    "slug": "amomama",
+    "url": "http://amomama.stpnnk.top",
+    "name": "Amomama",
     "label": "Сайт лучшего британского ларея в Украние",
-    "images": {
-        "phone": "",
-        "tablet": "",
-        "desktop": ""
-    }
+    "hours": "30 hours"
 }, {
-    "slug": "camp",
-    "url": "http://camp.stpnnk.top",
-    "name": "Camp Study",
+    "slug": "oi",
+    "url": "http://oi.stpnnk.top",
+    "name": "News portal «Oi»",
     "label": "Сайт лучшего британского ларея в Украние",
-    "images": {
-        "phone": "",
-        "tablet": "",
-        "desktop": ""
-    }
+    "hours": "50 hours"
 }, {
-    "slug": "camp",
-    "url": "http://camp.stpnnk.top",
-    "name": "Camp Study",
+    "slug": "consulting",
+    "url": "http://consulting.stpnnk.top",
+    "name": "Consulting Agency",
     "label": "Сайт лучшего британского ларея в Украние",
-    "images": {
-        "phone": "",
-        "tablet": "",
-        "desktop": ""
-    }
+    "hours": "30 hours"
 }, {
-    "slug": "camp",
-    "url": "http://camp.stpnnk.top",
-    "name": "Camp Study",
+    "slug": "doc",
+    "url": "http://doc-clinic.stpnnk.top",
+    "name": "Doc clinic «Nash doctor»",
     "label": "Сайт лучшего британского ларея в Украние",
-    "images": {
-        "phone": "",
-        "tablet": "",
-        "desktop": ""
-    }
+    "hours": "120 hours"
+}, {
+    "slug": "karpaty",
+    "url": "http://karpaty.stpnnk.top",
+    "name": "Camp «Karpaty»",
+    "label": "Сайт лучшего британского ларея в Украние",
+    "hours": "20 hours"
+}, {
+    "slug": "reshop",
+    "url": "http://reshop.stpnnk.top",
+    "name": "Next gen online store",
+    "label": "Сайт лучшего британского ларея в Украние",
+    "hours": "in progress"
+}, {
+    "slug": "sorp",
+    "url": "http://sorp.stpnnk.top",
+    "name": "Sorp group",
+    "label": "Сайт лучшего британского ларея в Украние",
+    "hours": "200 hours"
 }]

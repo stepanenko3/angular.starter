@@ -47,4 +47,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
+
+    setResponsive(responsive: string): void {
+        this.headerService.responsive = responsive;
+    }
 }
