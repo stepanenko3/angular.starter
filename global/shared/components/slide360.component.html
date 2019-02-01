@@ -1,9 +1,0 @@
-<img class="s360__src" [ngStyle]="{'height': size, 'min-width': (frames * 100) + '%'}" [lazyLoad]="image360.src" [defaultImage]="image360.progressive"
-    [style.transform]="'translateX(' + (100 / frames * current) * -1 + '%)'" />
-
-<div class="s360__play-control" *ngIf="!isPlayed" (click)="play()">
-    <i class="fs fs-play"></i>
-</div>
-<div class="s360__play-control" *ngIf="isPlayed" (click)="stop()">
-    <i class="fs fs-pause"></i>
-</div>

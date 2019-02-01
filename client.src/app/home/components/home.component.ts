@@ -10,13 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import {
-    ScrollToService,
-    MetaService,
-    BreadcrumbsService,
-    ScrollService,
     PreloaderService,
-    ConfigService
-} from '@core/services';
+} from '@core/services/preloader.service';
 import { TimelineMax, Back } from 'gsap';
 import { Utils } from '@core/utils';
 import { TranslateService } from '@ngx-translate/core';
@@ -29,15 +24,9 @@ import { ProjectService, HeaderService } from '@client/core/services';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
-    constructor(private route: ActivatedRoute,
-        private metaService: MetaService,
-        private breadcrumbsService: BreadcrumbsService,
-        private scrollService: ScrollService,
+    constructor(
         private cd: ChangeDetectorRef,
-        private config: ConfigService,
         private headerService: HeaderService,
-        private translate: TranslateService,
-        private scrollToService: ScrollToService,
         private preloader: PreloaderService,
         private projectService: ProjectService) {
     }
@@ -64,16 +53,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         this.text2 = this.textToChars('Stepanenko');
         this.text3 = this.textToChars('22 y.o. Developer from Kiev, Ukraine');
 
-        this.setMeta();
-        this.sub.add(this.translate.onLangChange.subscribe(() => this.setMeta()));
-
-        this.breadcrumbsService.data = [{ name: 'BREADCRUMBS.HOME', link: '/' }];
-
-        this.sub.add(this.scrollService.resize$.subscribe(() => {
-            this.isMobile = window.innerWidth <= 768;
-            this.cd.detectChanges();
-        }));
-
         this.sub.add(this.projectService.getProjects().subscribe(projects => {
             this.projectsLoading = false;
             this.projects = projects;
@@ -81,23 +60,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         }));
     }
 
-    private setMeta() {
-        this.translate.get(['META.TITLE.HOME', 'META.DESCRIPTION.HOME', 'META.KEYS.HOME'])
-            .pipe(take(1))
-            .subscribe(res => {
-                this.metaService.title = res['META.TITLE.HOME'];
-                this.metaService.desc = res['META.DESCRIPTION.HOME'];
-                this.metaService.keys = res['META.KEYS.HOME'];
-            });
-    }
-
     public textToChars(text: string): string {
         return Utils.textToChars(text);
     }
 
     ngAfterViewInit() {
-        this.scrollToService.scrollToPos(0);
-
         if (this.preloader.loaded) {
             this.doAnimate();
         } else {

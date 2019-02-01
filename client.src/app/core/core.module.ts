@@ -6,11 +6,13 @@ import { SharedModule } from '../shared';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import * as Component from './components';
-import * as Guard from './guards';
 import * as Service from './services';
 
-import * as GlobalDirective from '@core/directives';
-import * as GlobalService from '@core/services';
+import {ApiService} from '@core/services/api.service';
+import {MetaService} from '@core/services/meta.service';
+import {PreloaderService} from '@core/services/preloader.service';
+import {ScrollService} from '@core/services/scroll.service';
+import {ScrollToService} from '@core/services/scrollTo.service';
 
 @NgModule({
     imports: [
@@ -22,48 +24,23 @@ import * as GlobalService from '@core/services';
         ReactiveFormsModule,
     ],
     declarations: [
-        Component.FooterComponent,
-
-        Component.CustomMouseComponent,
-
-        Component.AuthModalComponent,
         Component.HeaderComponent,
 
         Component.NotFoundComponent,
-
-        GlobalDirective.ScrollToDirective,
     ],
     exports: [
-        Component.FooterComponent,
         Component.HeaderComponent,
-        Component.AuthModalComponent,
-        Component.CustomMouseComponent,
 
         Component.NotFoundComponent,
-
-        GlobalDirective.ScrollToDirective,
     ],
     providers: [
-        Guard.AuthGuard,
+        ApiService,
+        MetaService,
+        PreloaderService,
+        ScrollService,
+        ScrollToService,
 
-        GlobalService.ApiService,
-        GlobalService.AuthService,
-        GlobalService.BreadcrumbsService,
-        GlobalService.ColorsService,
-        GlobalService.ConfigService,
-        GlobalService.CurrencyService,
-        GlobalService.MetaService,
-        GlobalService.PreloaderService,
-        GlobalService.ScrollService,
-        GlobalService.ScrollToService,
-        GlobalService.StartupService,
-        GlobalService.GeoService,
-
-        Service.MenuService,
-        Service.SearchService,
-        Service.StaticPageService,
         Service.HeaderService,
-        Service.StartupService,
         Service.ProjectService,
     ]
 })

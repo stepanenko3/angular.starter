@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { take, map } from 'rxjs/operators';
-import { ApiService } from '@core/services';
+import { ApiService } from '@core/services/api.service';
 
 @Injectable()
 export class ProjectService {

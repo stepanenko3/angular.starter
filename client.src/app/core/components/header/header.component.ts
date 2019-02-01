@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 
 import { TimelineMax } from 'gsap';
 import { HeaderService } from '../../services';
-import { PreloaderService } from '@core/services';
+import { PreloaderService } from '@core/services/preloader.service';
 
 @Component({
     moduleId: module.id,
@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     constructor(
         private headerService: HeaderService,
         private preloader: PreloaderService,
-        @Inject(PLATFORM_ID) private platformId: Object
     ) {
     }
 

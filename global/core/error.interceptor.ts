@@ -8,14 +8,14 @@ import {
     HttpRequest
 } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
-import { AuthService } from './services';
+// import { AuthService } from './services';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
     private snackBar: MatSnackBar;
 
-    constructor(private auth: AuthService, inj: Injector) {
+    constructor(inj: Injector) {
         setTimeout(() => (this.snackBar = inj.get(MatSnackBar)));
     }
 
@@ -26,7 +26,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     public handleError = (error: Response) => {
         switch (error.status) {
             case 401:
-                this.auth.logout();
+                // this.auth.logout();
                 this.defaulError();
                 break;
 

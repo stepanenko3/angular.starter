@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { catchError, map } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
-import { Token } from '../models';
 
 @Injectable()
 export class ApiService {
@@ -14,33 +13,16 @@ export class ApiService {
         private httpClient: HttpClient,
         private snackBar: MatSnackBar,
     ) {
-        // if (window.location.hostname !== 'localhost') {
-        //     this.host = 'https://' + window.location.hostname + '/api/v1/';
-        // }
     }
-
-    private getToken(): Token {
-        // const token: Token = JSON.parse(localStorage.getItem('token'));
-        // return token;
-
-        return null;
-    }
-
     getUrl(url: string): string {
         return this.host + url;
     }
 
     public createHeader(): HttpHeaders {
         const headers = new HttpHeaders();
-        const token = this.getToken();
 
         headers.append('Content-Type', 'application/json;charset=utf-8');
         headers.append('X-CSRF-TOKEN', 'X-Requested-With');
-
-        if (!!token) {
-            headers.append('Authorization', `Bearer ${token.access_token}`);
-            headers.append('Accept', 'application/json');
-        }
 
         return headers;
     }
@@ -114,6 +96,7 @@ export class ApiService {
     public get(url: string, params = {}, options = {}): Observable<any> {
         const headers = this.createHeader();
         const rUrl = options['nonApi'] ? url : this.host + url;
+
         return this.httpClient.get(rUrl, Object.assign({ headers: headers }, params)).pipe(
             map(data => {
                 return data;
@@ -157,6 +140,7 @@ export class ApiService {
 
 
     private handleError = (error: HttpErrorResponse) => {
+        console.log(error);
 
         if (error.error instanceof ErrorEvent) {
             console.error('An error occurred:', error.error.message);

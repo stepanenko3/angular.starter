@@ -236,12 +236,23 @@ body {
 
     &__project {
         position: relative;
-        color: #fff;
+        color: #d6bf86;
         font-weight: bold;
-        font-size: 20px;
+        display: flex;
+        align-items: center;
+        font-size: 19px;
+        transition: all .3s;
+
+        @media(max-width: map-get($grid-breakpoints, 'md')) {
+            font-size: 0;
+        }
 
         &:before {
-            content: '';
+            color: #fff;
+            font-size: 12px;
+            margin-right: 10px;
+            content: '\ea10';
+            font-family: font('icons');
         }
     }
 
@@ -294,6 +305,18 @@ body {
             font-size: 21px;
             color: #d6bf86;
             transition: all .3s;
+        }
+    }
+
+    @media(max-width: map-get($grid-breakpoints, 'md')) {
+        &-menu {
+            display: none;
+        }
+
+        &-soc__item {
+            padding: 4px;
+            margin: 0 2px;
+            font-size: 0;
         }
     }
 
@@ -367,7 +390,8 @@ body {
 
 .s01 {
     position: relative;
-    height: calc(100vh - 59px);
+    min-height: calc(100vh - 59px);
+    padding: 60px 0 0 0;
     display: flex;
     align-items: center;
 
@@ -380,6 +404,15 @@ body {
         right: 60px;
         width: 800px;
         height: 600px;
+
+        @media(max-width: map-get($grid-breakpoints, 'md')) {
+            position: relative;
+            width: 320px;
+            height: 240px;
+            left: -15px;
+            right: initial;
+            display: block;
+        }
     }
 
     &:before,
@@ -394,6 +427,10 @@ body {
         left: 0;
         right: 0;
         margin: 0 auto;
+
+        @media(max-width: map-get($grid-breakpoints, 'md')) {
+            display: none;
+        }
     }
 
     &:after {
@@ -409,6 +446,10 @@ body {
         font-weight: 700;
         letter-spacing: rem(3px);
         font-family: 'Roboto Condensed', sans-serif;
+        
+        @media(max-width: map-get($grid-breakpoints, 'md')) {
+            font-size: 53px;
+        }
     }
 
     &__text,
@@ -418,6 +459,7 @@ body {
         margin-top: rem(40px);
         color: #999999;
         font-size: rem(21px);
+        line-height: 1.3;
     }
 
     &__header .letter,
@@ -435,6 +477,12 @@ body {
     font-size: rem(21px);
     line-height: 1.7;
 
+    @media(max-width: map-get($grid-breakpoints, 'md')) {
+        padding: rem(60px) 0;
+        font-size: rem(19px);
+        line-height: 1.5;
+    }
+
     b {
         color: #d6bf86;
     }
@@ -443,6 +491,10 @@ body {
 .skills {
     padding: rem(160px) 0 rem(90px);
     position: relative;
+
+    @media(max-width: map-get($grid-breakpoints, 'md')) {
+        padding: 60px 0;
+    }
 
     &:before,
     &:after {
@@ -456,6 +508,10 @@ body {
         left: 0;
         right: 0;
         margin: 0 auto;
+        
+        @media(max-width: map-get($grid-breakpoints, 'md')) {
+            display: none;
+        }
     }
 
     &:after {
@@ -467,6 +523,7 @@ body {
         display: block;
         margin-bottom: 50px;
         font-size: rem(23px);
+        line-height: 1.5;
 
         b {
             color: #d6bf86;
@@ -483,6 +540,10 @@ body {
     margin-bottom: 70px;
     cursor: pointer;
 
+    @media(max-width: map-get($grid-breakpoints, 'md')) {
+        margin-bottom: 40px;
+    }
+
     &:hover &__name {
         color: #d6bf86;
     }
@@ -493,6 +554,10 @@ body {
         align-items: center;
         justify-content: center;
         margin-bottom: 20px;
+
+        @media(max-width: map-get($grid-breakpoints, 'md')) {
+            height: 65px;
+        }
 
         img {
             max-width: 100%;
@@ -527,8 +592,18 @@ body {
         margin: 30px 0;
         width: 33.333%;
 
+        @media(max-width: map-get($grid-breakpoints, 'md')) {
+            width: 100%;
+            margin: 20px 0;
+            padding: 30px 15px;
+        }
+
         &:hover .mockup-iphone {
             transform: translate3d(40px, 0, 0);
+
+            @media(max-width: map-get($grid-breakpoints, 'md')) {
+                transform: translate3d(0, 0, 0);
+            }
         }
 
         .mockup {
@@ -600,6 +675,10 @@ body {
         left: 0;
         right: 0;
         margin: 0 auto;
+
+        @media(max-width: map-get($grid-breakpoints, 'md')) {
+            display: none;
+        }
     }
 
     @media screen and (max-width: 768px) {
@@ -615,6 +694,10 @@ body {
         align-items: stretch;
         flex-wrap: wrap;
         margin: 0 -30px;
+
+        @media(max-width: map-get($grid-breakpoints, 'md')) {
+            margin: 0;
+        }
     }
 
     &__header {
@@ -627,6 +710,7 @@ body {
         color: #d6bf86;
         font-family: 'Roboto Condensed', sans-serif;
         letter-spacing: 0.15625rem;
+        flex-wrap: wrap;
     }
 }
 
@@ -653,16 +737,24 @@ body {
         display: flex;
         margin: 0 -25px;
         flex-wrap: wrap;
+
+        @media(max-width: map-get($grid-breakpoints, 'md')) {
+            margin: 0;
+        }
     }
 
     &__link {
         position: relative;
         color: rgba(255,255,255,.4);
         margin-top: 25px;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
 
-        &:before {
-            
+        &:after {
+            display: block;
+            margin-left: 7px;
+            content: '\ea67';
+            font-family: font('icons');
         }
     }
 
@@ -671,10 +763,16 @@ body {
         display: flex;
         flex-direction: column;
         border-radius: 5px;
+        color: #fff;
         transition: all .3s;
         cursor: pointer;
         margin: 5px;
         width: calc(25% - 10px);
+
+        @media(max-width: map-get($grid-breakpoints, 'md')) {
+            margin: 5px 0;
+            width: 100%;
+        }
 
         &.mark {
             background: rgba(color('white'), .1);
@@ -918,6 +1016,11 @@ body {
     border-radius: 5px;
     padding: 8px 15px;
     justify-self: center;
+
+    @media(max-width: map-get($grid-breakpoints, 'md')) {
+        font-size: 23px;
+        margin-top: 20px;
+    }
 
     span {
         color: rgba(255,255,255,.5);

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, AfterViewInit, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { BreadcrumbsService, MetaService, PreloaderService } from '@core/services';
+import { PreloaderService } from '@core/services/preloader.service';
 import { Subscription } from 'rxjs/index';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TimelineMax } from 'gsap';
