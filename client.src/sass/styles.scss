@@ -235,9 +235,14 @@ body {
     z-index: 100;
 
     &__project {
+        position: relative;
         color: #fff;
         font-weight: bold;
-        font-size: 21px;
+        font-size: 20px;
+
+        &:before {
+            content: '';
+        }
     }
 
     &-menu,
@@ -298,11 +303,14 @@ body {
 
         &__item {
             color: #fff;
-            font-size: rem(30px);
-            margin: 0 rem(10px);
+            font-size: rem(24px);
+            margin: 0 rem(2px);
+            padding: 5px 10px;
             cursor: pointer;
             opacity: 1;
             transition: all .3s;
+            background: rgba(255,255,255, .1);
+            border-radius: 5px;
 
             &:hover {
                 opacity: .75;
